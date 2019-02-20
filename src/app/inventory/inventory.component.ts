@@ -6,17 +6,19 @@ import { Product } from '../product';
   template:
   `
   <div class="app-inventory">
-    <h1>{{ product.name }}</h1>
-    <span>{{ product.sku }}</span>
+    <app-product-list
+      [productlist]="products"
+      (OnProductSelected)="productWasSelected($event)">
+    </app-product-list>
   </div>
   `,
   
   styleUrls: ['./inventory.component.css']
 })
 export class InventoryComponent implements OnInit {
-product:Product;
+products:Product[];
   constructor() {
-    this.product = new Product('MySHOES',
+    this.products = [new Product('MySHOES',
     'Black Running Shoes',
     'assets/images/products/black-shoes.jpg',
     ['Men','Shoes','Running Shoes'],
@@ -25,13 +27,17 @@ product:Product;
     'Blue Jacket',
     'assets/images/products/blue-jacket.jpg',
     ['Women','Apparel','Jackets & Shirts'],
-    109.99),
+    238.99),
     new Product('NICEHAT',
     'A Nice Black Hat',
     'assets/images/products/black-hat.jpg',
     ['Men','Accessories','Hat'],
-    109.99)
+    29.99)];
    }
+
+  productWasSelected(product: Product): void{
+    console.log('Product clicked: ', product);
+  }
 
   ngOnInit() {
   }
