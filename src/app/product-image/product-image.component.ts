@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product-image',
-  templateUrl: './product-image.component.html',
+  inputs: ['product'],
+  host: {class:"ui small image"},
+  template: `
+  <img class="product-image" [src]="product.imageUrl">
+
+
+  `,
   styleUrls: ['./product-image.component.css']
 })
 export class ProductImageComponent implements OnInit {
-
-  constructor() { }
+product:Product;
 
   ngOnInit() {
   }
