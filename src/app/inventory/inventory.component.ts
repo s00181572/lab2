@@ -6,10 +6,10 @@ import { Product } from '../product';
   template:
   `
   <div class="app-inventory">
-    <app-product-list
+    <app-products-list
       [productlist]="products"
       (OnProductSelected)="productWasSelected($event)">
-    </app-product-list>
+    </app-products-list>
   </div>
   `,
   
